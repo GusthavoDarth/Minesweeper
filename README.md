@@ -53,3 +53,4 @@ selecionei a fileira 2 coluna 4
 4 | 1 1 0 0 0
 Voce perdeu!
 ```
+Para ganhar basta mostrar todas as celulas sem minas.
