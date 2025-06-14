@@ -5,6 +5,8 @@ int main(){
     int rowSize;
     int colSize;
     int bombsNum;
+    int row;
+    int col;
     printf("Fileiras: ");
     scanf("%d", &rowSize);
     printf("Colunas: ");
@@ -15,15 +17,23 @@ int main(){
     //int rowSize = 9;
     //int colSize = 9;
 
-    char** campoTesteTop = createMinefield(rowSize,colSize, FULLTILE);
-    char** campoTesteBot = addBombs(bombsNum, rowSize, colSize);
+    char** matrixTesteTop = createMinefield(rowSize,colSize, FULLTILE);
+    char** matrixTesteBot = addBombsAndNums(bombsNum, rowSize, colSize);
 
-
-    printField(campoTesteTop, rowSize, colSize);
-    printf("\n");
-    printField(campoTesteBot, rowSize, colSize);
-    printf("\n");
-    printField(addNums(campoTesteBot, rowSize, colSize), rowSize, colSize);
+    while (winCon(matrixTesteTop, matrixTesteTop, rowSize, colSize, bombsNum) == 0)
+    {
+        clearCMD();
+        //printBoard(matrixTesteBot, rowSize, colSize);
+        //printf("\n");
+        printBoard(matrixTesteTop, rowSize, colSize);
+        printf("Escolha a fileira: ");
+        scanf("%d", &row);
+        printf("Escolha a coluna: ");
+        scanf("%d", &col);
+        matrixTesteTop = CheckMove(matrixTesteTop, matrixTesteBot, rowSize, colSize, row, col);
+        
+    }
+    
     
 
     return 0;
